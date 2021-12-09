@@ -28,6 +28,9 @@ import seaborn as sns
 # PER 업, 다운 리미트 
 # ROE 랭크 순으로 정렬 변경
 # 날자별로 파일 저장 변경
+# git push origin / git push -f origin
+# TARGET PLICE 조건 추가 
+# EPS 조건 추가
 
 class ErrCount:
     def __init__(self):
@@ -357,6 +360,11 @@ sum_value.rename(columns={0:'SYMBOL',1:'NAME',2:'INDEX',3:'SECTOR',4:'INDUSTRY',
 sum_value[['P/E']] = sum_value['P/E'].str.extract('(\d+)')
 # PE 데이터 스트링 인티저 변환 
 sum_value[['P/E']] = sum_value[['P/E']].apply(pd.to_numeric)
+
+# TAGER PLICE 숫자만 입력 변경
+sum_value[['TARGET_PER']] = sum_value['TARGET_PER'].str.extract('(\d+)')
+# PE 데이터 스트링 인티저 변환 
+sum_value[['TARGET_PER']] = sum_value[['TARGET_PER']].apply(pd.to_numeric)
 
 # FORWAD P/E 숫자만 입력 변경
 sum_value[['FORWAD P/E']] = sum_value['FORWAD P/E'].str.extract('(\d+)')
